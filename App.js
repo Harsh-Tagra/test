@@ -5,7 +5,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { shareAsync } from 'expo-sharing';
 import { useState } from 'react';
 
+import { MMKV } from 'react-native-mmkv'
+
 export default function App() {
+const storage = new MMKV()
+storage.set('user.name', 'Marc')
+const username = storage.getString('user.name')
+console.log(username);
   const [downloadProgress, setDownloadProgress] = useState(0);
 
   const sampleFileUrl = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
