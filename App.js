@@ -24,7 +24,7 @@ export default function App() {
     try {
       const downloadResumable = FileSystem.createDownloadResumable(
         sampleFileUrl,
-        `${Platform.OS === 'android' ? FileSystem.cacheDirectory : FileSystem.documentDirectory}sample.mp4`,
+        `${FileSystem.documentDirectory}sample.mp4`,
         {},
         (downloadProgress) => {
           const progress = downloadProgress.totalBytesWritten / downloadProgress.totalBytesExpectedToWrite;
