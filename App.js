@@ -4,13 +4,9 @@ import * as FileSystem from 'expo-file-system';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { shareAsync } from 'expo-sharing';
 import { useState } from 'react';
-
-import { MMKV } from 'react-native-mmkv'
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Comp from './comp';
 export default function App() {
-const storage = new MMKV()
-storage.set('user.name', 'Marc')
-const username = storage.getString('user.name')
 
   const [downloadProgress, setDownloadProgress] = useState(0);
 
@@ -55,13 +51,25 @@ const username = storage.getString('user.name')
   }
   }
 
-  return (
+// storage.set('data', data);
+const client = new QueryClient()
+// const {data}=useQuery({
+//   queryKey:["test"],
+//   queryFn:fetch,
+
+// })
+// console.log(data);
+return (
+    <QueryClientProvider client={client}>
     <View style={styles.container}>
       <Text>{`${downloadProgress} %`}</Text>
-      <Text>{username}</Text>
+    
       <Button title="Download" onPress={downloadSampleFile} />
+      <Comp></Comp>
       <StatusBar style="auto" />
+
     </View>
+    </QueryClientProvider>
   );
 }
 
