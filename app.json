@@ -19,13 +19,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
+        "permissions": [
+          "READ_EXTERNAL_STORAGE",
+          "WRITE_EXTERNAL_STORAGE"
+        ],
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.harshtagra.test"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "125ce4c4-61ea-4e1c-a856-97a55b4ef658"
+      }
     }
   }
 }
