@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, PermissionsAndroid } from 'react-native';
+import { Button, StyleSheet, Text, View, PermissionsAndroid,Platform } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { shareAsync } from 'expo-sharing';
@@ -24,7 +24,7 @@ export default function App() {
     try {
       const downloadResumable = FileSystem.createDownloadResumable(
         sampleFileUrl,
-        FileSystem.documentDirectory + 'sample.mp4',
+        `${Platform.OS === 'android' ? FileSystem.cacheDirectory : FileSystem.documentDirectory}sample.mp4`,
         {},
         (downloadProgress) => {
           const progress = downloadProgress.totalBytesWritten / downloadProgress.totalBytesExpectedToWrite;
